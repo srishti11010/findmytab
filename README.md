@@ -1,6 +1,6 @@
-# FindMyTab
+# AwesomeTabSearch
 
-**FindMyTab** is a Chrome extension that lets you switch to any open tab using natural language.
+**AwesomeTabSearch** is a Chrome extension that lets you switch to any open tab using natural language.
 
 ## 🔍 Example
 
