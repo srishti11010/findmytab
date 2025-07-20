@@ -1,6 +1,6 @@
 # AwesomeTabSearch
 
-**AwesomeTabSearch** is a Chrome extension that lets you switch to any open tab using natural language.
+**AwesomeTabSearch** is a Chrome extension that lets you search and switch to any open tab using natural language.
 
 ## 🔍 Example
 
