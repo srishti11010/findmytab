@@ -1,26 +1,15 @@
 from flask import Flask, request, jsonify
-from dotenv import load_dotenv
-from openai import OpenAI
-import os
+from sentence_transformers import SentenceTransformer, util
 import numpy as np
-
-load_dotenv()
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 app = Flask(__name__)
 
-def get_embedding(text, model="text-embedding-3-small"):
+model = SentenceTransformer("BAAI/bge-small-en-v1.5")
+
+def get_embedding(text):
     if isinstance(text, list):
-        input_text = text
-    else:
-        input_text = [text]
-
-    response = client.embeddings.create(
-        model=model,
-        input=input_text
-    )
-
-    return [e.embedding for e in response.data]
+        return model.encode(text)
+    return model.encode([text])[0]
 
 def cosine_similarity(a, b):
     a = np.array(a)
@@ -32,8 +21,10 @@ def search():
     data = request.json
     query = data["query"]
     tabs = data["tabs"]
+    print(data)
 
-    query_embedding = get_embedding(query)[0]
+    query_embedding = query_embedding = get_embedding("Represent this sentence for searching relevant passages: " + query)
+
     tab_embeddings = get_embedding(tabs)
 
     similarities = [cosine_similarity(query_embedding, tab) for tab in tab_embeddings]
