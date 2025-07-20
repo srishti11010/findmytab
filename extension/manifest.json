@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "FindMyTab",
+  "name": "AwesomeTabSearch",
   "version": "1.0",
-  "description": "Switch to your tabs using natural language!",
+  "description": "Search your open tabs using natural language.",
   "permissions": ["tabs", "activeTab", "scripting"],
   "host_permissions": ["<all_urls>"],
   "background": {
